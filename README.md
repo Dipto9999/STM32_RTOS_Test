@@ -1,4 +1,4 @@
-# CMSIS-RTOS
+# CMSIS-RTOS and STM32 Peripherals
 
 # Contents
 
@@ -35,13 +35,13 @@ We are writing the `Middleware` with **CMSIS-RTOS v2 API**. This is a **FreeRTOS
 
 We have described our high-level design with the following execution diagram :
 
-<p align="center"><img src="Figures/RTOS_Execution_Diagram.jpg" width="60%" height="60%" title="RTOS Execution Diagram" ></p>
+<p align="center"><img src="Figures/RTOS_Execution_Diagram.jpg" width="40%" height="40%" title="RTOS Execution Diagram" ></p>
 
 #### Producer-Consumer Model
 
 The **RTOS** tasks are based on a **Producer**-**Consumer** relationship. We've designed task execution to adhere to the following block diagram :
 
-<p align="center"><img src="Figures/Block_Diagram.jpg" width="60%" height="60%" title="Block Diagram" ></p>
+<p align="center"><img src="Figures/Block_Diagram.jpg" width="40%" height="40%" title="Block Diagram" ></p>
 
 While adhering to our block diagram, a decision was made to read <b>ADC</b> via <b>DMA</b> stream to reduce the <b>CPU</b> involvement in thread concurrency.
 
@@ -54,7 +54,7 @@ The **Producer**-**Consumer** model entails :
 
 If the **Producer** task is unable to receive data from **Consumer** task, we transmit an error message via <b>USART2</b> peripheral. Since the **CMSIS-RTOS API** enables us the control of thread functions through **Thread Management**, the error message will be used to notify us of system malfunction.
 
-<p align="center"><img src="Figures/Thread_Management.jpg" width="60%" height="60%" title="CMSIS-RTOS v2 Thread Management" ></p>
+<p align="center"><img src="Figures/Thread_Management.jpg" width="40%" height="40%" title="CMSIS-RTOS v2 Thread Management" ></p>
 
 We are able to achieve the execution period in our design through :
 <ul>
@@ -80,12 +80,12 @@ We selected the [Makefile](Makefile) toolchain to work with individually install
 
 We ensured the **CPU** clock (i.e. **HCLK**) is configured to maximum frequency of <i>84 MHz</i> in the `Clock Configuration` tab. This provides us with microsecond scale timing given our period of <i>~12 ns</i>.
 
-<p align="center"><img src="Figures/STM32CubeMX_Config/HCLK_Config.jpg" width="60%" height="60%" title="STM32 Clock Configuration" ></p>
+<p align="center"><img src="Figures/STM32CubeMX_Config/HCLK_Config.jpg" width="40%" height="40%" title="STM32 Clock Configuration" ></p>
 
 The **FreeRTOS** scheduler requires **SysTick** to have a relatively low priority whereas the **STM32 HAL** framework provides **SysTick** a high priority for triggering interrupts.
 To fix this conflict, we follow <b>[Digi-Key](https://www.digikey.ca/en/maker/projects/getting-started-with-stm32-introduction-to-freertos/ad275395687e4d85935351e16ec575b1)</b>'s suggestion to configure the **System Core Timebase Source** to an unused timer, **TIM4**.
 
-<p align="center"><img src="Figures/STM32CubeMX_Config/RTOS_Config_Timebase.jpg" width="60%" height="60%" title="STM32 System Core Timebase Source"></p>
+<p align="center"><img src="Figures/STM32CubeMX_Config/RTOS_Config_Timebase.jpg" width="40%" height="40%" title="STM32 System Core Timebase Source"></p>
 
 #### RTOS
 
