@@ -80,7 +80,7 @@ We selected the [Makefile](Makefile) toolchain to work with individually install
 
 We ensured the **CPU** clock (i.e. **HCLK**) is configured to maximum frequency of <i>84 MHz</i> in the `Clock Configuration` tab. This provides us with microsecond scale timing given our period of <i>~12 ns</i>.
 
-<p align="center"><img src="Figures/STM32CubeMX_Config/HCLK_Config.jpg" width="80%" height="80%" title="STM32 Clock Configuration" ></p>
+<p align="center"><img src="Figures/STM32CubeMX_Config/HCLK_Config.jpg" width="100%" height="100%" title="STM32 Clock Configuration" ></p>
 
 The **FreeRTOS** scheduler requires **SysTick** to have a relatively low priority whereas the **STM32 HAL** framework provides **SysTick** a high priority for triggering interrupts.
 To fix this conflict, we follow <b>[Digi-Key](https://www.digikey.ca/en/maker/projects/getting-started-with-stm32-introduction-to-freertos/ad275395687e4d85935351e16ec575b1)</b>'s suggestion to configure the **System Core Timebase Source** to an unused timer, **TIM4**.
