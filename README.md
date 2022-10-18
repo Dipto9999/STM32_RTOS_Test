@@ -148,5 +148,5 @@ The videos in the [`Demonstrations`](Demonstrations) directory show the output o
 
 
 | Flash Code Onto STM32 | Send Messages to Putty via UART |
-| :-------------------: | :--------------------------------: |
-| ![](https://user-images.githubusercontent.com/52113009/196308654-3d0659de-2d7f-4046-a1d4-9a5dbe4ea0be.mp4) | ![](https://user-images.githubusercontent.com/52113009/196308347-f39bc641-2dde-487f-91e2-0e2c10dd66bb.mp4)
+| :----------------: | :--------------------------------: |
+| https://user-images.githubusercontent.com/52113009/196308654-3d0659de-2d7f-4046-a1d4-9a5dbe4ea0be.mp4 | https://user-images.githubusercontent.com/52113009/196308347-f39bc641-2dde-487f-91e2-0e2c10dd66bb.mp4 |
