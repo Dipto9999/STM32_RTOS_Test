@@ -111,7 +111,7 @@ The `prev_adc` struct is used to receive the data from `adcQueue`.</br>
 The <b>Cortex-Debug</b> Extension was used to look at the values during runtime.
 
 <p align="center">
-    <img src="Figures/Debug_Watches.jpg" width="100%" height="100%" title="Variable Watches Used to Debug Program." >
+    <img src="Figures/Debug_Watches.jpg" width="70%" height="70%" title="Variable Watches Used to Debug Program." >
 </p>
 
 Some more minor configurations are captured in the [`STM32CubeMX_Config`](Figures/STM32CubeMX_Config) directory.
