@@ -103,17 +103,15 @@ We have initialized the `producerTask` & `consumerTask` tasks to have equal prio
 | ![](Figures/STM32CubeMX_Config/RTOS_Config_Threads.jpg)
 | ![](Figures/STM32CubeMX_Config/RTOS_Config_SoftwareTimer.jpg)
 
-For the `adcQueue` functionality :
+<u>or the `adcQueue` functionality :</u>
 
-<ul>
-    <li>The `next_adc` struct is used to send the <b>ADC</b> data to `adcQueue`.</li>
-    <li>The `prev_adc` struct is used to receive the data from `adcQueue`.</li>
-</ul>
+The `next_adc` struct is used to send the <b>ADC</b> data to `adcQueue`.</li>
+The `prev_adc` struct is used to receive the data from `adcQueue`.</li>
 
 The <b>Cortex-Debug</b> Extension was used to look at the values during runtime.
 
 <p align="center">
-    <img src="Figures/Debug_Watches.jpg" width="80%" height="80%" title="Variable Watches Used to Debug Program." >
+    <img src="Figures/Debug_Watches.jpg" width="100%" height="100%" title="Variable Watches Used to Debug Program." >
 </p>
 
 Some more minor configurations are captured in the [`STM32CubeMX_Config`](Figures/STM32CubeMX_Config) directory.
