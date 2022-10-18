@@ -128,9 +128,9 @@ This project build and debug settings are specified in the [(`.vscode`)](.vscode
 
 #### Flash Executable
 
-Flashing the [(`CMSIS_ADC_Test.elf`)](build/CMSIS_ADC_Test.elf) executable onto the <b>STM32 Nucleo Board</b> required the <b>ARM GCC</b> <b>C</b> Compiler, <b>Make</b> Automation Tool, and the <b>Open On-Chip Debugger (OpenOCD) Debugger</b> for Embedded Devices.
+Flashing the [(`CMSIS_ADC_Test.elf`)](build/CMSIS_ADC_Test.elf) executable onto the **STM32 Nucleo Board** required the **ARM GCC** **C** Compiler, **Make** Automation Tool, and the **Open On-Chip Debugger (OpenOCD) Debugger** for Embedded Devices.
 
-These tools were added to the <b>System Path</b> on the <b>Windows OS</b>.
+These tools were added to the **System Path** on the **Windows OS**.
 
 The [(`Makefile`)](Makefile) is modified to include the `make flash` command.
 
@@ -144,9 +144,12 @@ flash: all
 
 ## Demonstration
 
-The videos in the [`Demonstrations`](Demonstrations) directory show the output on the <b>STM32 Nucleo Board</b> as well as the <b>UART Communication</b> send to the serial terminal.
+Here is a demonstration of the executable flashed on the **STM32 Nucleo Board**.
 
+https://user-images.githubusercontent.com/52113009/196309584-2441558b-f264-4eda-b3f3-2319068db6b7.mp4
 
-https://user-images.githubusercontent.com/52113009/196308654-3d0659de-2d7f-4046-a1d4-9a5dbe4ea0be.mp4
+Here are the messages sent to **Putty** client via **UART** communication.
 
 https://user-images.githubusercontent.com/52113009/196308347-f39bc641-2dde-487f-91e2-0e2c10dd66bb.mp4
+
+These videos are stored in the [`Demonstrations`](Demonstrations) directory.
