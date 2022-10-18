@@ -55,7 +55,7 @@ The **Producer**-**Consumer** model entails :
     <li>The <b>Consumer</b> task receiving the <b>ADC</b> data.</li>
 </ul>
 
-If the **Producer** task is unable to receive data from **Consumer** task, we transmit an error message via <b>USART2</b> peripheral. Since the **CMSIS-RTOS API** enables us the control of thread functions through **Thread Management**, the error message will be used to notify us of system malfunction.
+If the **Producer** task is unable to receive data from **Consumer** task, we transmit an error message via <b>USART2</b> peripheral. Since the **CMSIS-RTOS API** enables us to control of thread functions through **Thread Management**, the error message will be used to notify us of system malfunction.
 
 <p align="center"><img src="Figures/Thread_Management.jpg" width="30%" height="30%" title="CMSIS-RTOS v2 Thread Management" ></p>
 
@@ -103,10 +103,10 @@ We have initialized the `producerTask` & `consumerTask` tasks to have equal prio
 | ![](Figures/STM32CubeMX_Config/RTOS_Config_Threads.jpg)
 | ![](Figures/STM32CubeMX_Config/RTOS_Config_SoftwareTimer.jpg)
 
-<u>or the `adcQueue` functionality :</u>
+For the `adcQueue` functionality :</br>
 
-The `next_adc` struct is used to send the <b>ADC</b> data to `adcQueue`.</li>
-The `prev_adc` struct is used to receive the data from `adcQueue`.</li>
+The `next_adc` struct is used to send the <b>ADC</b> data to `adcQueue`.</br>
+The `prev_adc` struct is used to receive the data from `adcQueue`.</br>
 
 The <b>Cortex-Debug</b> Extension was used to look at the values during runtime.
 
