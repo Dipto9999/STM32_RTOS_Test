@@ -71,7 +71,7 @@ Note : A benefit of implementing our solution with **CMSIS-RTOS** is that the de
 
 We are toggling the **LD2** with an **RTOS** auto-reload software timer.
 
-<p align="center"><img src="Figures/AutoReload_Timer.jpg" width="30%" height="30%" title="AutoReload Timer" ></p>
+<p align="center"><img src="Figures/AutoReload_Timer.jpg" width="60%" height="60%" title="AutoReload Timer" ></p>
 
 **FreeRTOS** software timers are similar to software interrupts, but operate at the task level. The **Timer Service Task** blocks itself and wakes up when the software timer expires. We invoke a callback function here to toggle **LD2**.
 
@@ -113,7 +113,7 @@ For the `adcQueue` functionality :
 The <b>Cortex-Debug</b> Extension was used to look at the values during runtime.
 
 <p align="center">
-    <img src="Images/Debug_Watches.jpg" width="80%" height="80%" title="Variable Watches Used to Debug Program." >
+    <img src="Figures/Debug_Watches.jpg" width="80%" height="80%" title="Variable Watches Used to Debug Program." >
 </p>
 
 Some more minor configurations are captured in the [`STM32CubeMX_Config`](Figures/STM32CubeMX_Config) directory.
@@ -141,7 +141,7 @@ The [(`Makefile`)](Makefile) is modified to include the `make flash` command.
 # flash
 #######################################
 flash: all
-	openocd -f interface/stlink.cfg -f target/stm32l4x.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
+	openocd -f interface/stlink.cfg -f target/stm32f4x.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
 ```
 
 ## Demonstration
