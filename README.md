@@ -23,7 +23,7 @@ This was designed to test timing of **RTOS** tasks, while maintaining **ADC** an
 
 <p align="center"><img src="Figures/Nucleo_Board.jpg" width="60%" height="60%" title="Image of STM32 Nucleo Board" ></p>
 
-# Design
+## Design
 
 We have designed this program to :
 
