@@ -3,19 +3,19 @@
 # Contents
 
 * [Overview](#Overview)
-    * [Design](#Design)
-        * [RTOS](#RTOS)
-            * [Producer-Consumer Model](#Producer-Consumer-Model)
-            * [Software Timer](#Software-Timer)
-    * [Implementation](#Implementation)
-        * [STM32CubeMX](#STM32CubeMX)
-            * [Timebase](#Timebase)
-            * [CMSIS-RTOS](#CMSIS-RTOS)
-        * [Source Code](#Source-Code)
-        * [Build Tools](#Build-Tools)
-            * [VSCode Editor](#VSCode-Editor)
-            * [Flash Executable](#Flash-Executable)
-    * [Demonstrations](#Demonstrations)
+* [Design](#Design)
+    * [RTOS](#RTOS)
+        * [Producer-Consumer Model](#Producer-Consumer-Model)
+        * [Software Timer](#Software-Timer)
+* [Implementation](#Implementation)
+    * [STM32CubeMX](#STM32CubeMX)
+        * [Timebase](#Timebase)
+        * [CMSIS-RTOS](#CMSIS-RTOS)
+    * [Source Code](#Source-Code)
+    * [Build Tools](#Build-Tools)
+        * [VSCode Editor](#VSCode-Editor)
+        * [Flash Executable](#Flash-Executable)
+* [Demonstrations](#Demonstrations)
 
 # Overview
 
@@ -23,7 +23,7 @@ This was designed to test timing of **RTOS** tasks, while maintaining **ADC** an
 
 <p align="center"><img src="Figures/Nucleo_Board.jpg" width="60%" height="60%" title="Image of STM32 Nucleo Board" ></p>
 
-## Design
+# Design
 
 We have designed this program to :
 
@@ -32,7 +32,7 @@ We have designed this program to :
     <li>Toggle <b>LD2 GPIO</b> pin <u>and</u> transmit <b>RTOS Kernel Tick</b> time via <b>USART2</b> <em>every 100 ms</em>.</li>
 </ul>
 
-### RTOS
+## RTOS
 
 We are writing the `Middleware` with **CMSIS-RTOS v2 API**. This is a **FreeRTOS** wrapper designed for **Cortex-M** processor-based devices. This enables concurrent execution of program threads.
 
@@ -40,7 +40,7 @@ We have described our high-level design with the following execution diagram :
 
 <p align="center"><img src="Figures/RTOS_Execution_Diagram.jpg" width="40%" height="40%" title="RTOS Execution Diagram" ></p>
 
-#### Producer-Consumer Model
+### Producer-Consumer Model
 
 The **RTOS** tasks are based on a **Producer**-**Consumer** relationship. We've designed task execution to adhere to the following block diagram :
 
@@ -67,7 +67,7 @@ We are able to achieve the execution period in our design through :
 
 Note : A benefit of implementing our solution with **CMSIS-RTOS** is that the default time resolution for **CMSIS-OS** is <i>1000 us = 1 ms</i>. This can be modified to be set to <i>1 us</i>, but for our purposes, we require the millisecond scale timing.
 
-#### Software Timer
+### Software Timer
 
 We are toggling the **LD2** with an **RTOS** auto-reload software timer.
 
@@ -75,15 +75,15 @@ We are toggling the **LD2** with an **RTOS** auto-reload software timer.
 
 **FreeRTOS** software timers are similar to software interrupts, but operate at the task level. The **Timer Service Task** blocks itself and wakes up when the software timer expires. We invoke a callback function here to toggle **LD2**.
 
-## Implementation
+# Implementation
 
-### STM32CubeMX
+## STM32CubeMX
 
 The project was generated using the <b>STM32CubeMX</b> Graphical Tool Software to achieve this system design. This configuration can be viewed and modified in the [(`CMSIS_ADC_Test.ioc`)](CMSIS_ADC_Test.ioc) file.
 
 We selected the [Makefile](Makefile) toolchain to work with individually installed tools on the **VSCode** Editor.
 
-#### Timebase
+### Timebase
 
 We ensured the **CPU** clock (i.e. **HCLK**) is configured to maximum frequency of <i>84 MHz</i> in the `Clock Configuration` tab. This provides us with microsecond scale timing given our period of <i>~12 ns</i>.
 
@@ -94,7 +94,7 @@ To fix this conflict, we follow <b>[Digi-Key](https://www.digikey.ca/en/maker/pr
 
 <p align="center"><img src="Figures/STM32CubeMX_Config/RTOS_Config_Timebase.jpg" width="80%" height="80%" title="STM32 System Core Timebase Source"></p>
 
-#### RTOS
+### RTOS
 
 We have initialized the `producerTask` & `consumerTask` tasks to have equal priority and send/receive data via the `adcQueue` queue. The periodic timer is declared here as well.
 
@@ -116,17 +116,17 @@ The <b>Cortex-Debug</b> Extension was used to look at the values during runtime.
 
 Some more minor configurations are captured in the [`STM32CubeMX_Config`](Figures/STM32CubeMX_Config) directory.
 
-### Source Code
+## Source Code
 
 The source code is written using a **Hardware Abstraction Layer** in [(`main.c`)](Core/Src/main.c).
 
-### Build Tools
+## Build Tools
 
-#### VSCode Editor
+### VSCode Editor
 
 This project build and debug settings are specified in the [(`.vscode`)](.vscode) directory. The [(`launch.json`)](/.vscode/launch.json) and [(`c_cpp_properties.json`)](/.vscode/c_cpp_properties.json) were modified to integrate the debug functionality into <b>VSCode</b>.
 
-#### Flash Executable
+### Flash Executable
 
 Flashing the [(`CMSIS_ADC_Test.elf`)](build/CMSIS_ADC_Test.elf) executable onto the **STM32 Nucleo Board** required the **ARM GCC** **C** Compiler, **Make** Automation Tool, and the **Open On-Chip Debugger (OpenOCD) Debugger** for Embedded Devices.
 
@@ -142,7 +142,7 @@ flash: all
 	openocd -f interface/stlink.cfg -f target/stm32f4x.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
 ```
 
-## Demonstration
+# Demonstration
 
 Here is a demonstration of the executable flashed on the **STM32 Nucleo Board**.
 
